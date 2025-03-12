@@ -30,8 +30,8 @@ class EventSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Start time must be in the future.")
         return value
 
-    def validate(self, data):
-        if data['duration'] <= 0:
+    def validate_duration(self, data):
+        if data <= 0:
             raise serializers.ValidationError("Duration must be greater than zero.")
         return data
 
